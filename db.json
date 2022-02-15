@@ -1,0 +1,31 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "name": "Mike",
+      "age": 16
+    },
+    {
+      "id": 2,
+      "name": "Lucas",
+      "age": 16
+    },
+    {
+      "id": 3,
+      "name": "Jennie",
+      "age": 18
+    }
+  ],
+  "todo": [
+    {
+      "id": "xEddsCgDc3cw0zxKQwhh9",
+      "text": "111",
+      "completed": false
+    },
+    {
+      "id": "A9W0s2Jh48e597qz90mg3",
+      "text": "111",
+      "completed": false
+    }
+  ]
+}

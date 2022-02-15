@@ -3,6 +3,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  darkMode: false,
+  corePlugins: {
+    preflight: false,
+  },
   plugins: [],
 };

@@ -1,0 +1,8 @@
+export enum StateType {
+  REACTCONTEXT = 'REACTCONTEXT',
+  RECOIL = 'RECOIL',
+  JOTAI = 'JOTAI',
+  ZUSTAND = 'ZUSTAND',
+  REDUX = 'REDUX',
+  VALTIO = 'VALTIO',
+}
