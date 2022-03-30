@@ -12,7 +12,7 @@ const { TabPane } = Tabs;
 const App: FC = () => {
   return (
     <div className='px-6'>
-      <Tabs defaultActiveKey={StateType.VALTIO} size='large'>
+      <Tabs defaultActiveKey={StateType.VALTIO} size='large' destroyInactiveTabPane>
         <TabPane tab='Context' key={StateType.REACTCONTEXT}>
           <ReactContextApp />
         </TabPane>

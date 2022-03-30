@@ -1,16 +1,17 @@
-import React, { FC } from 'react';
-import Bears from './components/Bears';
+import Divider from 'antd/lib/divider';
+import { FC } from 'react';
+import BearsFish from './components/Bears';
 import Counter from './components/Counter';
-import Fishes from './components/Fishes';
 import UserList from './components/UserList';
 
 const App: FC = () => {
   return (
     <div>
       <Counter />
+      <Divider />
       <UserList />
-      <Fishes />
-      <Bears />
+      <Divider />
+      <BearsFish />
     </div>
   );
 };

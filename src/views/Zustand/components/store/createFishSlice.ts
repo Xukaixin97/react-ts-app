@@ -1,17 +1,15 @@
 import type { GetState, SetState } from 'zustand';
 import { MyState } from './useStore';
 
-export interface FishSlice {
+export interface IFishSlice {
   fishes: number;
   repopulate: () => void;
 }
 
-const maxFishes = 10;
-
 const createFishSlice = (set: SetState<MyState>, get: GetState<MyState>) => ({
-  fishes: maxFishes,
+  fishes: 10,
   repopulate: () => {
-    set((prev) => ({ fishes: maxFishes }));
+    set((prev) => ({ fishes: 10 }));
   },
 });
 

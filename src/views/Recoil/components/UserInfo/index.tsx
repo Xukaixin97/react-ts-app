@@ -9,9 +9,9 @@ const UserDetail: FC = () => {
   const refreshUserInfo = useRecoilRefresher_UNSTABLE(userInfoSelector);
 
   return (
-    <div>
-      <h2>name: {userInfo?.name}</h2>
-      <h2>age: {userInfo?.age}</h2>
+    <div >
+      <div>name: {userInfo?.name}</div>
+      <div>age: {userInfo?.age}</div>
       <Button
         onClick={() => {
           refreshUserInfo();

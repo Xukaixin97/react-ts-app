@@ -1,3 +1,4 @@
+import Divider from 'antd/lib/divider';
 import { Provider } from 'jotai';
 import { Suspense, type FC } from 'react';
 import Counter from './components/Counter';
@@ -8,6 +9,7 @@ const JotaiApp: FC = () => {
     <Provider>
       <Suspense fallback='Loading...'>
         <Counter />
+        <Divider />
         <TodoApp />
       </Suspense>
     </Provider>

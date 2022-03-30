@@ -1,16 +1,16 @@
 import { Button, Space } from 'antd';
 import { type FC } from 'react';
-import shallow from 'zustand/shallow';
 import useStore from './store/useStore';
 
 const Counter: FC = () => {
-  const { bears, addBears } = useStore((state) => ({ bears: state.bears, addBears: state.increaseBears }), shallow);
+  const { fishes, eatFish, repopulate } = useStore((state) => ({ ...state }));
 
   return (
     <div>
-      <h1>{`熊: ${bears} 只`}</h1>
+      <h1>{`鱼: ${fishes} 条`}</h1>
       <Space size={16}>
-        <Button onClick={() => addBears()}>bear +1</Button>
+        <Button onClick={() => eatFish()}>eat fish</Button>
+        <Button onClick={() => repopulate()}>重置</Button>
       </Space>
     </div>
   );
