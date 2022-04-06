@@ -1,3 +1,3 @@
-### json:server
+### yarn json:server
 
 ### yarn start
