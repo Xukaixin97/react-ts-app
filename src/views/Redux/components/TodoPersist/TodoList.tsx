@@ -1,50 +1,50 @@
-import { Radio, Space } from 'antd';
-import { type FC } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hook';
-import { visibleTypes } from '../../types';
-import TodoItem from './TodoItem';
-import { setVisibleType } from './TodoSlice';
+import { Radio, Space } from 'antd'
+import { type FC } from 'react'
+import { useAppDispatch, useAppSelector } from '../../hook'
+import { visibleTypes } from '../../types'
+import TodoItem from './TodoItem'
+import { setVisibleType } from './TodoSlice'
 
 const VisibleTypeList: FC = () => {
-  const currentVisibleType = useAppSelector((state) => state.todoPersist.visibleType);
-  const dispatch = useAppDispatch();
+  const currentVisibleType = useAppSelector(state => state.todoPersist.visibleType)
+  const dispatch = useAppDispatch()
 
   return (
     <Radio.Group
       value={currentVisibleType}
-      buttonStyle='solid'
-      onChange={(e) => dispatch(setVisibleType(e.target.value))}
+      buttonStyle="solid"
+      onChange={e => dispatch(setVisibleType(e.target.value))}
     >
       <Radio.Button value={visibleTypes.ALL}>{visibleTypes.ALL}</Radio.Button>
       <Radio.Button value={visibleTypes.ACTIVE}>{visibleTypes.ACTIVE}</Radio.Button>
       <Radio.Button value={visibleTypes.COMPLETED}>{visibleTypes.COMPLETED}</Radio.Button>
     </Radio.Group>
-  );
-};
+  )
+}
 
 const TodoList: FC = () => {
-  const currentVisibleType = useAppSelector((state) => state.todoPersist.visibleType);
+  const currentVisibleType = useAppSelector(state => state.todoPersist.visibleType)
 
   const todoList = useAppSelector((state) => {
-    const { todoList } = state.todoPersist;
+    const { todoList } = state.todoPersist
     switch (currentVisibleType) {
       case visibleTypes.ACTIVE:
-        return todoList.filter((todo) => !todo.completed);
+        return todoList.filter(todo => !todo.completed)
       case visibleTypes.COMPLETED:
-        return todoList.filter((todo) => todo.completed);
+        return todoList.filter(todo => todo.completed)
       default:
-        return todoList;
+        return todoList
     }
-  });
+  })
 
   return (
-    <Space direction='vertical'>
+    <Space direction="vertical">
       <VisibleTypeList />
-      {todoList.map((todo) => (
+      {todoList.map(todo => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
     </Space>
-  );
-};
+  )
+}
 
-export default TodoList;
+export default TodoList

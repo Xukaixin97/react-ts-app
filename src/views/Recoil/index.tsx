@@ -1,6 +1,6 @@
 import Divider from 'antd/lib/divider'
-import { Suspense, type FC } from 'react'
-import { atomFamily, RecoilRoot, useRecoilValue } from 'recoil'
+import { type FC, Suspense } from 'react'
+import { RecoilRoot, atomFamily, useRecoilValue } from 'recoil'
 import CharacterCounter from './components/CharacterCounter'
 import DebugObserve from './components/DebugObserver'
 import UserInfo from './components/UserInfo'
@@ -14,7 +14,7 @@ const elementPositionStateFamily = atomFamily<number[], number>({
 function ElementListItem({ elementID }: { elementID: number }) {
   const position = useRecoilValue(elementPositionStateFamily(elementID))
   return (
-    <div className='mt-4'>
+    <div className="mt-4">
       Element: {elementID}
       Position: {position}
     </div>

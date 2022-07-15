@@ -1,0 +1,44 @@
+{
+  "extends": [
+    "@antfu",
+    "plugin:react/recommended"
+  ],
+  // "parserOptions": {
+  //   "ecmaFeatures": {
+  //     "jsx": true
+  //   }
+  // },
+  // "plugins": [
+  //   "react"
+  // ],
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxBOF": 0,
+        "maxEOF": 1
+      }
+    ],
+    // "react/jsx-filename-extension": [
+    //   "warn",
+    //   {
+    //     "extensions": [
+    //       ".tsx"
+    //     ]
+    //   }
+    // ],
+    "react/jsx-newline": [
+      "error",
+      {
+        "prevent": true
+        // "allowMultilines": false
+      }
+    ],
+    "react/react-in-jsx-scope": "off"
+  }
+}

@@ -10,7 +10,7 @@ const countAtom = atom(0)
 
 countAtom.onMount = (setCountAtom) => {
   // atom is mounted in provider
-  setCountAtom((c) => (c = c + 21)) // increment count on mount
+  setCountAtom(c => (c = c + 21)) // increment count on mount
   // return optional onUnmount function
   return () => {
     console.log('unmounting')
@@ -45,7 +45,7 @@ const multiplyCountAtom = atom(null, (get, set, by: number) => set(countAtom, ge
 function Controls() {
   const [, multiply] = useAtom(multiplyCountAtom)
   return (
-    <Button onClick={() => multiply(3)} className='ml-2' type='primary'>
+    <Button onClick={() => multiply(3)} className="ml-2" type="primary">
       triple
     </Button>
   )
@@ -59,7 +59,7 @@ export const Counter: FC = () => {
     <div>
       <h1>count: {count}</h1>
       <h1>doubledCount: {doubledCount}</h1>
-      <Button onClick={() => setCount((c) => (c = c + 1))} type='primary'>
+      <Button onClick={() => setCount(c => (c = c + 1))} type="primary">
         +1
       </Button>
       <Controls />

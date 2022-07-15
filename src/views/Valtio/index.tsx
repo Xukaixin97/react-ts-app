@@ -1,7 +1,7 @@
-import Divider from 'antd/lib/divider';
-import { Suspense, type FC } from 'react';
-import CounterApp from './components/Counter';
-import UserInfo from './components/UserInfo';
+import Divider from 'antd/lib/divider'
+import { type FC, Suspense } from 'react'
+import CounterApp from './components/Counter'
+import UserInfo from './components/UserInfo'
 
 const ValtioApp: FC = () => {
   return (
@@ -11,7 +11,7 @@ const ValtioApp: FC = () => {
       <Divider />
       <UserInfo />
     </Suspense>
-  );
-};
+  )
+}
 
-export default ValtioApp;
+export default ValtioApp

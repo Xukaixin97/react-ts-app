@@ -1,12 +1,14 @@
-import create from 'zustand';
-import createBearSlice, { IBearSlice } from './createBearSlice';
-import createFishSlice, { IFishSlice } from './createFishSlice';
+import create from 'zustand'
+import type { IBearSlice } from './createBearSlice'
+import createBearSlice from './createBearSlice'
+import type { IFishSlice } from './createFishSlice'
+import createFishSlice from './createFishSlice'
 
-export type MyState = IBearSlice & IFishSlice;
+export type MyState = IBearSlice & IFishSlice
 
 const useStore = create<MyState>((set, get) => ({
   ...createBearSlice(set, get),
   ...createFishSlice(set, get),
-}));
+}))
 
-export default useStore;
+export default useStore

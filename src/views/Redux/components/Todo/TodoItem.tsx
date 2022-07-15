@@ -1,19 +1,19 @@
-import { Checkbox } from 'antd';
-import { type FC } from 'react';
-import { useAppDispatch } from '../../hook';
-import { ITodo } from '../../types';
-import { completeIOrCancelTodo } from './TodoSlice';
+import { Checkbox } from 'antd'
+import { type FC } from 'react'
+import { useAppDispatch } from '../../hook'
+import type { ITodo } from '../../types'
+import { completeIOrCancelTodo } from './TodoSlice'
 interface IProps {
-  todo: ITodo;
+  todo: ITodo
 }
 
 const TodoItem: FC<IProps> = ({ todo }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   return (
     <Checkbox checked={todo.completed} onChange={() => dispatch(completeIOrCancelTodo(todo.id))}>
       {todo.text}
     </Checkbox>
-  );
-};
+  )
+}
 
-export default TodoItem;
+export default TodoItem

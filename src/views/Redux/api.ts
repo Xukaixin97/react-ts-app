@@ -1,6 +1,6 @@
-import { Post } from '@/utils';
-import { ITodo } from './types';
+import type { ITodo } from './types'
+import { Post } from '@/utils'
 
 export const addTodo = async (todo: ITodo) => {
-  return Post<ITodo>(`http://localhost:3001/todo`, todo);
-};
+  return Post<ITodo>('http://localhost:3001/todo', todo)
+}

@@ -1,43 +1,41 @@
-import { Button, Divider, Input } from 'antd';
-import { type FC } from 'react';
-import { proxy, subscribe, useSnapshot } from 'valtio';
-import { subscribeKey, watch } from 'valtio/utils';
-
+import { Button, Divider, Input } from 'antd'
+import { type FC } from 'react'
+import { proxy, subscribe, useSnapshot } from 'valtio'
+import { subscribeKey, watch } from 'valtio/utils'
 
 export interface IState {
-  count: number;
+  count: number
   text: string
 }
 
 export const state = proxy<IState>({
   count: 0,
-  text: 'hello'
-});
+  text: 'hello',
+})
 
 // setInterval(() => {
 //   ++state.count
 // }, 1000)
 
-//Suscribe to a primitive value of state,
-subscribeKey(state, 'count', () => console.log('state.count has changed to', state.count));
+// Suscribe to a primitive value of state,
+subscribeKey(state, 'count', () => console.log('state.count has changed to', state.count))
 
 watch((get) => {
-  console.log('watching state has changed to', get(state));
-});
-
+  console.log('watching state has changed to', get(state))
+})
 
 const CounterApp: FC = () => {
-  const snap = useSnapshot<IState>(state);
+  const snap = useSnapshot<IState>(state)
   return (
     <div>
       <h1>count: {snap.count}</h1>
       <Button onClick={() => ++state.count}>+1</Button>
     </div>
-  );
-};
+  )
+}
 
 const TextApp: FC = () => {
-  const snap = useSnapshot<IState>(state);
+  const snap = useSnapshot<IState>(state)
 
   return (
     <div>
@@ -47,8 +45,8 @@ const TextApp: FC = () => {
         state.text = e.currentTarget.value
       }} />
     </div>
-  );
-};
+  )
+}
 
 const APP: FC = () => {
   return (
@@ -57,9 +55,6 @@ const APP: FC = () => {
       <TextApp />
     </>
   )
-
 }
 
-
-
-export default APP;
+export default APP

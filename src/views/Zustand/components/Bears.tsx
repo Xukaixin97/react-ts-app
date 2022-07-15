@@ -1,9 +1,9 @@
-import { Button, Space } from 'antd';
-import { type FC } from 'react';
-import useStore from './store/useStore';
+import { Button, Space } from 'antd'
+import { type FC } from 'react'
+import useStore from './store/useStore'
 
 const Counter: FC = () => {
-  const { fishes, eatFish, repopulate } = useStore((state) => ({ ...state }));
+  const { fishes, eatFish, repopulate } = useStore(state => ({ ...state }))
 
   return (
     <div>
@@ -13,7 +13,7 @@ const Counter: FC = () => {
         <Button onClick={() => repopulate()}>重置</Button>
       </Space>
     </div>
-  );
-};
+  )
+}
 
-export default Counter;
+export default Counter

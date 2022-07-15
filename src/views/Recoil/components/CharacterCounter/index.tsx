@@ -1,20 +1,19 @@
 import { Input } from 'antd'
-import { ChangeEvent } from 'react'
-import { atom, DefaultValue, selector, useRecoilState, useRecoilValue, type AtomEffect } from 'recoil'
+import type { ChangeEvent } from 'react'
+import { type AtomEffect, DefaultValue, atom, selector, useRecoilState, useRecoilValue } from 'recoil'
 
 // // persist state
-const localStorageEffect =
-  (key) =>
-  ({ setSelf, onSet }) => {
-    const savedValue = localStorage.getItem(key)
-    if (savedValue != null) {
-      setSelf(JSON.parse(savedValue))
-    }
+const localStorageEffect
+  = key =>
+    ({ setSelf, onSet }) => {
+      const savedValue = localStorage.getItem(key)
+      if (savedValue != null)
+        setSelf(JSON.parse(savedValue))
 
-    onSet((newValue, _, isReset) => {
-      isReset ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify(newValue))
-    })
-  }
+      onSet((newValue, _, isReset) => {
+        isReset ? localStorage.removeItem(key) : localStorage.setItem(key, JSON.stringify(newValue))
+      })
+    }
 
 const textState = atom<string>({
   key: 'textState',
@@ -37,7 +36,7 @@ function TextInput() {
 
   return (
     <div>
-      <Input type='text' value={text} onChange={onChange} className='w-96' />
+      <Input type="text" value={text} onChange={onChange} className="w-96" />
       <br />
       Echo: {text}
     </div>

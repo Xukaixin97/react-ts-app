@@ -1,6 +1,6 @@
-import { Button, Space } from 'antd';
-import { type FC } from 'react';
-import { useCounterStore } from '../store';
+import { Button, Space } from 'antd'
+import { type FC } from 'react'
+import { useCounterStore } from '../store'
 
 // // Getting non-reactive fresh state
 // const count = useCounterStore.getState();
@@ -19,9 +19,8 @@ import { useCounterStore } from '../store';
 // // // Destroying the store (removing all listeners)
 // useCounterStore.destroy();
 
-
 const Counter: FC = () => {
-  const { count, increaseCount, doubleCount, tripleCount, deleteEverything } = useCounterStore();
+  const { count, increaseCount, doubleCount, tripleCount, deleteEverything } = useCounterStore()
 
   return (
     <div>
@@ -33,7 +32,7 @@ const Counter: FC = () => {
         <Button onClick={() => deleteEverything()}>clear store</Button>
       </Space>
     </div>
-  );
-};
+  )
+}
 
-export default Counter;
+export default Counter

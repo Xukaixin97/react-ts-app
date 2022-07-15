@@ -1,9 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { visibleTypes, type ITodo } from '../../types';
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import { type ITodo, visibleTypes } from '../../types'
 
 interface IInitialState {
-  todoList: ITodo[];
-  visibleType: string;
+  todoList: ITodo[]
+  visibleType: string
 }
 
 const initialState: IInitialState = {
@@ -20,28 +21,26 @@ const initialState: IInitialState = {
     },
   ],
   visibleType: visibleTypes.ALL,
-};
+}
 
 const todoSlice = createSlice({
   name: 'todoPersist',
   initialState,
   reducers: {
     addTodo: (state, action: PayloadAction<ITodo>) => {
-      state.todoList.push(action.payload);
+      state.todoList.push(action.payload)
     },
     completeIOrCancelTodo: (state, action: PayloadAction<string>) => {
       state.todoList.forEach((item) => {
-        if (item.id === action.payload) {
-          item.completed = !item.completed;
-          return;
-        }
-      });
+        if (item.id === action.payload)
+          item.completed = !item.completed
+      })
     },
     setVisibleType: (state, action: PayloadAction<string>) => {
-      state.visibleType = action.payload;
+      state.visibleType = action.payload
     },
   },
-});
+})
 
-export const { addTodo, completeIOrCancelTodo, setVisibleType } = todoSlice.actions;
-export default todoSlice.reducer;
+export const { addTodo, completeIOrCancelTodo, setVisibleType } = todoSlice.actions
+export default todoSlice.reducer

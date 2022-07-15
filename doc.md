@@ -89,38 +89,45 @@ Selector 是 “幂等” 函数：对于一组给定的输入，它们应该总
 2. 还有一种直接拿的官方的例子。userInfoQueryRequestIDState 更新后 userInfoQuery就会重新就算，（加了个依赖，依赖更新更新了就会导致重新计算，尽管此依赖和业务关联不大）
 
 3. ```tsx
-    const userInfoQueryRequestIDState = atomFamily({
-      key: 'UserInfoQueryRequestID',
-      default: 0,
-    });
+   const userInfoQueryRequestIDState = atomFamily        key: 'UserInfoQueryReques  ',
+      defu)
+ 
+ const});
     
-    const userInfoQuery = selectorFamily({
-      key: 'UserInfoQuery',
-      get: userID => async ({get}) => {
-        get(userInfoQueryRequestIDState(userID)); // 添加请求ID作为依赖关系
-        const response = await myDBQuery({userID});
-        if (response.error) {
-          throw response.error;
-        }
-        return response;
+    const userInfoQuery =  lectorFamily({
+      k   'UserInfoQuery',
+       ge t: userI    async ({get}) => {
+        get(userInfo) // 添加请求ID作为依赖关系
+     const // 添加请求ID作为依赖关系
+        cons t resp o)
+     ift myDBQuery({userI
+       throw response.error;
+            throwresponse
+   }r; )
+ 
+ function   return response;
       },
-    });
+   });
     
     function useRefreshUserInfo(userID) {
-      const setUserInfoQueryRequestID = useSetRecoilState(userInfoQueryRequestIDState(userID));
-      return () => {
-        setUserInfoQueryRequestID(requestID => requestID + 1);
+      const setUserInfoQueryRequestI)
+   returncoilState    InfoQueryRequestIDState(userID));
+      return () =>)
+   }   stserInfoQueryRequestID(request  => requestID + 1);
       };
     }
     
-    function CurrentUserInfo() {
-      const currentUserID = useRecoilValue(currentUserIDState);
-      const currentUserInfo = useRecoilValue(userInfoQuery(currentUserID));
+    function Cur)
+   consto() {
+      const currentUserID = useRecoilValue(currentUserID)
+   const   const currentUserInfo = useRecoilValue(userInfoQ)
+ 
+   returnerID));
       const refreshUserInfo = useRefreshUserInfo(currentUserID);
     
       return (
         <div>
-          <h1>{currentUser.name}</h1>
+         <h1{currentUser.name}</h1>
           <button onClick={refreshUserInfo}>刷新</button>
         </div>
       );
@@ -203,8 +210,8 @@ anAtom.onMount = (setAtom) => {
 ### Persistence
 
 ```tsx
-import { atomWithStorage } from 'jotai/utils';
-const countAtom = atomWithStorage('countAtom', 0);
+import { atomWithStorage } from 'jotai/utils'
+const countAtom = atomWithStorage('countAtom', 0)
 ```
 
 ### atomFamily()
@@ -249,7 +256,7 @@ const nuts = useStore(state => state.nuts)
 ```
 
 ```tsx
-//取多个值时
+// 取多个值时
 import shallow from 'zustand/shallow'
 
 // Object pick, re-renders the component when either state.nuts or state.honey change
@@ -277,8 +284,8 @@ export const useUserStore = create<IUserState>((set) => ({
 ### 组件外部操作store
 
 ```tsx
-//store.ts
-import {subscribeWithSelector, type StoreApiWithSubscribeWithSelector } from 'zustand/middleware';
+// store.ts
+import { type StoreApiWithSubscribeWithSelector, subscribeWithSelector } from 'zustand/middleware'
 
 export const useCounterStore = create<
   ICounterState,
@@ -288,42 +295,42 @@ export const useCounterStore = create<
 >(
   subscribeWithSelector((set, get) => ({
     count: 0,
-    increaseCount: (count: number) => set((state) => ({ count: state.count + count })),
-    doubleCount: () => set((state) => ({ count: state.count * 2 })),
+    increaseCount: (count: number) => set(state => ({ count: state.count + count })),
+    doubleCount: () => set(state => ({ count: state.count * 2 })),
     tripleCount: () => set({ count: get().count * 3 }),
     deleteEverything: () => set({}, true),
   })),
-);
+)
 ```
 
 ```tsx
 // Counter.tsx
 // Getting non-reactive fresh state
-const count = useCounterStore.getState();
+const count = useCounterStore.getState()
 
 // Listening to all changes, fires synchronously on every change
 const unsub1 = useCounterStore.subscribe(
-  (state) => state.count,
+  state => state.count,
   (paw, previousPaw) => console.log(paw, previousPaw),
   { fireImmediately: true },
-);
+)
 
 // Updating state, will trigger listeners
-useCounterStore.setState({ count: 2 });
+useCounterStore.setState({ count: 2 })
 // Unsubscribe listeners
-unsub1();
+unsub1()
 // // Destroying the store (removing all listeners)
-useCounterStore.destroy();
+useCounterStore.destroy()
 ```
 
 ### Middleware
 
 ```tsx
 // Log every time state is changed
-const log = config => (set, get, api) => config(args => {
-  console.log("  applying", args)
+const log = config => (set, get, api) => config((args) => {
+  console.log('  applying', args)
   set(args)
-  console.log("  new state", get())
+  console.log('  new state', get())
 }, get, api)
 ```
 
@@ -399,7 +406,7 @@ unsubscribe()
 import { subscribeKey } from 'valtio/utils'
 
 const state = proxy({ count: 0, text: 'hello' })
-subscribeKey(state, 'count', () => console.log('state.count has changed to', state.count));
+subscribeKey(state, 'count', () => console.log('state.count has changed to', state.count))
 ```
 
 ### 监听state
